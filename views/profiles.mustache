@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="public/style.css">
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="/for-hire">Available for Hire</a>
+        <a href="/employed">Currently Employed</a>
+      </nav>
+    </header>
+
+    <h1>Robots for Hire</h1>
+    <section class="container">
+      <div class="profile">
+        {{ #users }}
+        <img src={{ avatar }}>
+        <h3 class="name"> {{ name }} </h3>
+          {{ #job }}
+              <h3>Company: <span>{{ company }}</span></h3>
+              <h3>Job Title: <span>{{ job }}</span></h3>
+            {{ /job }}
+            {{ ^job }}
+              <p class="unemployed">Available for hire</p>
+            {{ /job }}
+          <h3>Country:</h3>
+          {{ #address }}
+          <a href="/country/{{country}}">
+            <p>{{ country }}</p>
+          </a>
+          {{ /address }}
+          <h3>Skills</h3>
+          {{ #skills }}
+          <a href="/skills/{{.}}">
+            <p>{{ . }}</p>
+          </a>
+          {{ /skills }}
+        {{ /users }}
+      </div>
+    </section>
+  </body>
+</html>
